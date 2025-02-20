@@ -2,46 +2,48 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student extends Person {
 
     private int age;
     private String name;
     private int StudentID;
+    private List<Double> grades;
 
-    private static final List<Integer> grades = new ArrayList<>();
 
-    public Student(String name, int age, int StudentID, int grades) {
+    public Student(String name, int age, int StudentID) {
+        super(name, age, StudentID);
         this.age = age;
         this.name = name;
         this.StudentID = StudentID;
+        this.grades = new ArrayList<>();
     }
-    public static List<Integer> getGrades() {
-        return grades;
-    }
+    @Override
     public int getAge() {
         return age;
     }
     public void setAge(int age) {
         this.age = age;
     }
+    @Override
     public String getName() {
         return name;
     }
     public void setAge(String name) {
         this.name = name;
     }
+    @Override
     public int getStudentID() {
         return StudentID;
     }
     public void setStudentID(int StudentID) {
         this.StudentID = StudentID;
     }
-    public void addGrade(int grade) {
+    public void addGrade(double grade) {
         grades.add(grade);
     }
-    public float getAverageGrade() {
-        float somme = 0;
-        for (int grade : grades) {
+    public double getAverageGrade() {
+        double somme = 0;
+        for (double grade : grades) {
         if (grades.isEmpty()) {
             return 0;
         }
@@ -50,11 +52,11 @@ public class Student {
         return somme / grades.size();
     }
     public static void main(String[] args) {
-        Student student = new Student("Alice", 24, 20, 3);
+        Student student = new Student("Alice", 24, 100);
         
-        student.addGrade(15);
-        student.addGrade(15);
-        student.addGrade(8);
+        student.addGrade(15.3);
+        student.addGrade(15.8);
+        student.addGrade(8.7);
         
         System.out.println("Moyenne des notes de " + student.name + " : " + student.getAverageGrade());
     }

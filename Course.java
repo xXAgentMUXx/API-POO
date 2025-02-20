@@ -5,17 +5,14 @@ public class Course  {
 
     private String CourseName;
     private int CreditHours;
-    private Course courseCode;
+    private String courseCode;
+    private List<Student> students;
 
-    private static List<String> student = new ArrayList<>();
-
-    public Course(int CreditHours, String student, String CourseName, Course courseCode) {
-        this.CreditHours = CreditHours;
-        this.CourseName = CourseName;
-        this.courseCode = courseCode;
-    }
-    public static List<String> getStudent() {
-        return student;
+    public Course(String CourseName, String courseCode, int CreditHours) {
+    this.CourseName = CourseName;
+    this.courseCode = courseCode;
+    this.CreditHours = CreditHours;
+    this.students = new ArrayList<>();
     }
     public int getCreditHours() {
         return CreditHours;
@@ -29,26 +26,32 @@ public class Course  {
     public void setCourseName(String CourseName) {
         this.CourseName = CourseName;
     }
-    public Course getCourseCode() {
+    public String getCourseCode() {
         return courseCode;
     }
-    public void setCourseCode(Course courseCode) {
+    public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
     }
-    public void enrollStudent(String students) {
-        student.add(students);
+    public void enrollStudent(Student student) {
+        students.add(student);
     }
-    public static List<String> getEnrolledStudents() {
-        return student;
+      public List<Student> getEnrolledStudents() {
+        return students;
     }
     public static void main(String[] args) {
-    
-        Course course = new Course(12, "name", "EXO", null);
+    Course course = new Course("Mathématiques", "MATH101", 3);
+        
+        Student student1 = new Student("Mathys", 20, 1001);
+        Student student2 = new Student("Axel", 22, 1002);
+        Student student3 = new Student("Vito", 21, 1003);
 
-        course.enrollStudent("Mathys");
-        course.enrollStudent("Axel");
-        course.enrollStudent("Vito");
+        course.enrollStudent(student1);
+        course.enrollStudent(student2);
+        course.enrollStudent(student3);
 
-        System.out.println("Tous les étudiants : " + getEnrolledStudents());
+        System.out.println("Étudiants inscrits au cours " + course.getCourseName() + " :");
+        for (Student s : course.getEnrolledStudents()) {
+            System.out.println("- " + s.getName());
+        }
     }
 }
