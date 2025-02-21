@@ -39,7 +39,7 @@ public class Course  {
         return students;
     }
     public static void main(String[] args) {
-    Course course = new Course("Mathématiques", "MATH101", 3);
+    Course course = new Course("Mathématiques", "MATHS_101", 3);
         
         Student student1 = new Student("Mathys", 20, 1001);
         Student student2 = new Student("Axel", 22, 1002);

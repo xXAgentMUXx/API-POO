@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class Student extends Person {
         return somme / grades.size();
     }
     public static void main(String[] args) {
-        Student student = new Student("Alice", 24, 100);
+        Student student = new Student("Alex", 24, 100);
         
         student.addGrade(15.3);
         student.addGrade(15.8);

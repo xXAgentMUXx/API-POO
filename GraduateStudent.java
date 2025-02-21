@@ -8,12 +8,13 @@ public class GraduateStudent extends Student {
             return super.getAverageGrade() + 2;
     }
     public static void main(String[] args) {
-        GraduateStudent gradStudent = new GraduateStudent("Charlie", 25, 2001);
-        gradStudent.addGrade(12.8);
-        gradStudent.addGrade(12.5);
-        gradStudent.addGrade(18.7);
+        GraduateStudent gradeStudent = new GraduateStudent("Vito", 25, 2001);
+        gradeStudent.addGrade(12.8);
+        gradeStudent.addGrade(12.5);
+        gradeStudent.addGrade(18.7);
 
-        System.out.println("Nom : " + gradStudent.getName());
-        System.out.println("Moyenne (avec bonus) : " + gradStudent.getAverageGrade());
+        System.out.println("Nom : " + gradeStudent.getName());
+        System.out.println("ID : " + gradeStudent.getStudentID());
+        System.out.println("Moyenne : " + gradeStudent.getAverageGrade());
     }
 }
