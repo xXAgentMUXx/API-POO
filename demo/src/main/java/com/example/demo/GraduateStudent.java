@@ -1,3 +1,5 @@
+package com.example.demo;
+
 public class GraduateStudent extends Student {
     
     public GraduateStudent(String name, int age, int studentID) {
@@ -17,4 +19,4 @@ public class GraduateStudent extends Student {
         System.out.println("ID : " + gradeStudent.getStudentID());
         System.out.println("Moyenne : " + gradeStudent.getAverageGrade());
     }
-}
+} // .\gradlew.bat bootRun pour executer la page

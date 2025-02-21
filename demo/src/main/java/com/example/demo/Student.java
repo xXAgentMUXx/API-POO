@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,6 @@ public class Student extends Person {
         student.addGrade(15.8);
         student.addGrade(8.7);
         
-        System.out.println("Moyenne des notes de " + student.name + " : " + student.getAverageGrade());
+        System.out.println("Moyenne des notes de " + student.name +" ( ID : " + student.getStudentID() + " ) : " + student.getAverageGrade());
     }
-}
+} // .\gradlew.bat bootRun pour executer la page

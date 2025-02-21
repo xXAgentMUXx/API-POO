@@ -1,3 +1,5 @@
+package com.example.demo;
+
 public abstract class Person {
     private String name;
     private int age;
@@ -24,4 +26,4 @@ public abstract class Person {
         System.out.println("Âge : " + student.getAge());
         System.out.println("ID étudiant : " + student.getStudentID());
     }
-}
+} // .\gradlew.bat bootRun pour executer la page

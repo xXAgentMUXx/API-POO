@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,4 +56,4 @@ public class Course  {
             System.out.println("- " + s.getName());
         }
     }
-}
+} // .\gradlew.bat bootRun pour executer la page

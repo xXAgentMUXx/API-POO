@@ -1,3 +1,5 @@
+package com.example.demo;
+
 public class Enrollment {
     private Student student;
     private Course course;
@@ -34,4 +36,4 @@ public class Enrollment {
             System.out.println("- " + s.getName());
         }
     }
-}
+} // .\gradlew.bat bootRun pour executer la page
