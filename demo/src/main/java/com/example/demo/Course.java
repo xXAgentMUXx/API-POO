@@ -44,8 +44,8 @@ public class Course  {
     Course course = new Course("Mathématiques", "MATHS_101", 3);
         
         Student student1 = new Student("Mathys", 20, 1001);
-        Student student2 = new Student("Axel", 22, 1002);
-        Student student3 = new Student("Vito", 21, 1003);
+        Student student2 = new Student("Axel", 22, 1452);
+        Student student3 = new Student("Vito", 21, 4521);
 
         course.enrollStudent(student1);
         course.enrollStudent(student2);
@@ -53,7 +53,7 @@ public class Course  {
 
         System.out.println("Étudiants inscrits au cours " + course.getCourseName() + " :");
         for (Student s : course.getEnrolledStudents()) {
-            System.out.println("- " + s.getName());
+            System.out.println("- Name : " + s.getName() + ", ID : "+ s.getStudentID());
         }
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat" bootRun pour executer la page
+} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page

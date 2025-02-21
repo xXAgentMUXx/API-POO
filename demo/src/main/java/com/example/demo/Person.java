@@ -26,4 +26,4 @@ public abstract class Person {
         System.out.println("Âge : " + student.getAge());
         System.out.println("ID étudiant : " + student.getStudentID());
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat" bootRun pour executer la page
+} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page

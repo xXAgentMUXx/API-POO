@@ -36,4 +36,4 @@ public class Enrollment {
             System.out.println("- " + s.getName());
         }
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat" bootRun pour executer la page
+} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page

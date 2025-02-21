@@ -1,4 +1,3 @@
-
 package com.example.demo;
 
 public class UndergraduateStudent extends Student {
@@ -19,4 +18,4 @@ public class UndergraduateStudent extends Student {
         System.out.println("ID : " + gradeStudent.getStudentID());
         System.out.println("Moyenne : " + gradeStudent.getAverageGrade());
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat" bootRun pour executer la page
+} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
