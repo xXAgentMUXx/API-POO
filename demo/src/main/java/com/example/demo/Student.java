@@ -61,4 +61,4 @@ public class Student extends Person {
         
         System.out.println("Moyenne des notes de " + student.name +" ( ID : " + student.getStudentID() + " ) : " + student.getAverageGrade());
     }
-} // .\gradlew.bat bootRun pour executer la page
+} // faites la commande "cd demo" puis, ".\gradlew.bat" bootRun pour executer la page
