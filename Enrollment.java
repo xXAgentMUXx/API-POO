@@ -28,7 +28,7 @@ public class Enrollment {
         Enrollment enrollment = new Enrollment(mathCourse, student1);
         enrollment.register();
 
-        System.out.println("Etudiant inscrit au cours : " + enrollment.getStudent().getName());
+        System.out.println("Etudiant inscrit : " + enrollment.getStudent().getName());
         System.out.println("Liste des etudiants en cours " + mathCourse.getCourseName() + " :");
         for (Student s : mathCourse.getEnrolledStudents()) {
             System.out.println("- " + s.getName());
