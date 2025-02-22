@@ -3,6 +3,9 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,12 +13,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonProperty("courseName")
     private String courseName;
+    @JsonProperty("courseCode")
     private String courseCode;
+    @JsonProperty("creditHours")
     private int creditHours;
     @ManyToMany
     private List<Student> students = new ArrayList<>();
@@ -80,3 +87,11 @@ public class Course {
         }
     }
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+
+/* commande POST : 
+Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
+-Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
+-Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "data.json")))*/ 
+
+// commande GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
+
