@@ -1,10 +1,20 @@
 package com.example.demo;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Enrollment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
     private Student student;
+    @ManyToOne
     private Course course;
 
-    public Enrollment(Course course, Student student) {
+    public Enrollment() {}
+
+    public Enrollment(Student student, Course course) {
         this.student = student;
         this.course = course;
     }
@@ -23,7 +33,7 @@ public class Enrollment {
     public void register() {
         course.enrollStudent(student);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Course mathCourse = new Course("Mathématiques", "MATH101", 3);
         Student student1 = new Student("Alice", 22, 1001);
 
@@ -35,5 +45,5 @@ public class Enrollment {
         for (Student s : mathCourse.getEnrolledStudents()) {
             System.out.println("- " + s.getName());
         }
-    }
+    }*/
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page

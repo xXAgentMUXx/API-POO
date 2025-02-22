@@ -3,20 +3,23 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+
+@Entity
 public class Student extends Person {
 
     private int age;
     private String name;
     private int StudentID;
-    private List<Double> grades;
+    @ElementCollection
+    private List<Double> grades = new ArrayList<>();
 
+    public Student() {}
 
     public Student(String name, int age, int StudentID) {
-        super(name, age, StudentID);
-        this.age = age;
-        this.name = name;
+        super(name, age);
         this.StudentID = StudentID;
-        this.grades = new ArrayList<>();
     }
     @Override
     public int getAge() {
@@ -32,7 +35,6 @@ public class Student extends Person {
     public void setAge(String name) {
         this.name = name;
     }
-    @Override
     public int getStudentID() {
         return StudentID;
     }

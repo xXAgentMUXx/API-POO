@@ -3,43 +3,66 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Course  {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
-    private String CourseName;
-    private int CreditHours;
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String courseName;
     private String courseCode;
-    private List<Student> students;
+    private int creditHours;
+    @ManyToMany
+    private List<Student> students = new ArrayList<>();
 
-    public Course(String CourseName, String courseCode, int CreditHours) {
-    this.CourseName = CourseName;
-    this.courseCode = courseCode;
-    this.CreditHours = CreditHours;
-    this.students = new ArrayList<>();
-    }
-    public int getCreditHours() {
-        return CreditHours;
-    }
-    public void setCreditHours(int CreditHours) {
-        this.CreditHours = CreditHours;
-    }
-    public String getCourseName() {
-        return CourseName;
-    }
-    public void setCourseName(String CourseName) {
-        this.CourseName = CourseName;
-    }
-    public String getCourseCode() {
-        return courseCode;
-    }
-    public void setCourseCode(String courseCode) {
+    public Course() {}
+
+    public Course(String courseName, String courseCode, int creditHours) {
+        this.courseName = courseName;
         this.courseCode = courseCode;
+        this.creditHours = creditHours;
     }
-    public void enrollStudent(Student student) {
-        students.add(student);
-    }
-      public List<Student> getEnrolledStudents() {
+    public List<Student> getStudents() {
         return students;
     }
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+        public Long getId() {
+        return id;
+        }
+        public void setId(Long id) {
+            this.id = id;
+        }
+        public int getCreditHours() {
+            return creditHours;
+        }
+        public void setCreditHours(int CreditHours) {
+            this.creditHours = CreditHours;
+        }
+        public String getCourseName() {
+            return courseName;
+        }
+        public void setCourseName(String courseName) {
+            this.courseName = courseName;
+        }
+        public String getCourseCode() {
+            return courseCode;
+        }
+        public void setCourseCode(String courseCode) {
+            this.courseCode = courseCode;
+        }
+        public void enrollStudent(Student student) {
+            students.add(student);
+        }
+          public List<Student> getEnrolledStudents() {
+            return students;
+        }
     public static void main(String[] args) {
     Course course = new Course("Mathématiques", "MATHS_101", 3);
         

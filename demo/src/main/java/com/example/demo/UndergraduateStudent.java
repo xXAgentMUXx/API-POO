@@ -1,12 +1,16 @@
 package com.example.demo;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class UndergraduateStudent extends Student {
+    public UndergraduateStudent() {}
     public UndergraduateStudent(String name, int age, int studentID) {
         super(name, age, studentID);
     }
     @Override
     public double getAverageGrade() {
-    return super.getAverageGrade() - 2;
+        return super.getAverageGrade() - 2;
     }
     public static void main(String[] args) {
         UndergraduateStudent gradeStudent = new UndergraduateStudent("Mathys", 25, 2001);
