@@ -88,10 +88,15 @@ public class Course {
     }
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
 
-/* commande POST : 
+/* commande POST (avec json files) : 
 Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 -Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
--Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "data.json")))*/ 
+-Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "data.json")))
+
+Commande POST (sans json files) :
+Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
+-Headers @{"Content-Type"="application/json"} `
+-Body '{"courseName":"Mathematiques","courseCode":"MATH101","credits":3}'*/ 
 
 // commande GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
 

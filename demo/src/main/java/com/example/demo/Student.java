@@ -57,10 +57,15 @@ public class Student extends Person {
     }
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
 
-/*commande POST :
+/*commande POST (avec json fichier) :
 Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 -Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
  -Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "student.json")))
+ 
+ commande POST (sans json fichier) :
+Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
+-Headers @{"Content-Type"="application/json"} `
+-Body '{"name":"John Doe","age":21,"studentID":12345,"grades":[14,16,12,18,15]}'
  */
 
  //commande GET : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Get
