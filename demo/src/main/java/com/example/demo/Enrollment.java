@@ -22,6 +22,9 @@ public class Enrollment {
         this.student = student;
         this.course = course;
     }
+    public Long getId() {
+        return id;
+    }
     public Course getCourse() {
         return course;
     }
