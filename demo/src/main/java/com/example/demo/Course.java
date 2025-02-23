@@ -95,3 +95,5 @@ Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 
 // commande GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
 
+// commande suppress : Invoke-WebRequest -Uri "http://localhost:8080/courses/1" -Method Delete
+

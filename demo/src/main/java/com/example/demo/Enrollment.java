@@ -1,6 +1,10 @@
 package com.example.demo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Enrollment {
@@ -47,3 +51,9 @@ public class Enrollment {
         }
     }*/
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+
+/*Commande POST :
+ Invoke-WebRequest -Uri "http://localhost:8080/enrollments" -Method Post `
+-Headers @{"Content-Type"="application/x-www-form-urlencoded"} `
+-Body "studentId=1&courseId=1"
+ */

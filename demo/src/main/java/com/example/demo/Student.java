@@ -9,47 +9,39 @@ import jakarta.persistence.Entity;
 @Entity
 public class Student extends Person {
 
-    private int age;
-    private String name;
-    private int StudentID;
+    private int studentID;
+    
     @ElementCollection
     private List<Double> grades = new ArrayList<>();
 
     public Student() {}
 
-    public Student(String name, int age, int StudentID) {
-        super(name, age);
-        this.StudentID = StudentID;
+    public Student(String name, int age, int studentID) {
+        super(name, age); 
+        this.studentID = studentID;
     }
-    @Override
-    public int getAge() {
-        return age;
+    public List<Double> getGrades() {
+        return grades;
     }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    @Override
-    public String getName() {
-        return name;
-    }
-    public void setAge(String name) {
-        this.name = name;
+    public void setStudents(List<Double> grades) {
+        this.grades = grades;
     }
     public int getStudentID() {
-        return StudentID;
+        return studentID;
     }
-    public void setStudentID(int StudentID) {
-        this.StudentID = StudentID;
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
     }
     public void addGrade(double grade) {
         grades.add(grade);
     }
+
     public double getAverageGrade() {
-        double somme = 0;
-        for (double grade : grades) {
-        if (grades.isEmpty()) {
+        if (grades.isEmpty()) { 
             return 0;
         }
+        double somme = 0;
+        for (double grade : grades) {
             somme += grade;
         }
         return somme / grades.size();
@@ -61,6 +53,14 @@ public class Student extends Person {
         student.addGrade(15.8);
         student.addGrade(8.7);
         
-        System.out.println("Moyenne des notes de " + student.name +" ( ID : " + student.getStudentID() + " ) : " + student.getAverageGrade());
+        System.out.println("Moyenne des notes de " +" ( ID : " + student.getStudentID() + " ) : " + student.getAverageGrade());
     }
 } // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+
+/*commande POST :
+Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
+-Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
+ -Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "student.json")))
+ */
+
+ //commande GET : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Get

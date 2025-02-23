@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,5 +37,10 @@ public class CourseController {
         Course course = courseService.getCourseById(id);
         return course != null ? ResponseEntity.ok(course) : ResponseEntity.notFound().build();
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
+    courseService.deleteCourse(id);
+    return ResponseEntity.noContent().build();
+}
 }
 
