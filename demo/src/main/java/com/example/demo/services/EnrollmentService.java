@@ -37,4 +37,7 @@ public class EnrollmentService {
         Enrollment enrollment = new Enrollment(student, course);
         return enrollmentRepository.save(enrollment);
     }
+    public void deleteEnrollment(Long id) {
+        enrollmentRepository.deleteById(id);
+    }
 }
