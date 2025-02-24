@@ -29,8 +29,8 @@ public class StudentController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
-        Student student = studentService.getStudentById(id);
-        return student != null ? ResponseEntity.ok(student) : ResponseEntity.notFound().build();
+        Student student_id = studentService.getStudentById(id);
+        return student_id != null ? ResponseEntity.ok(student_id) : ResponseEntity.notFound().build();
     }
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
@@ -40,5 +40,5 @@ public class StudentController {
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
     studentService.deleteStudent(id);
     return ResponseEntity.noContent().build();
-}
+    }
 }

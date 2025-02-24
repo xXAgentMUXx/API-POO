@@ -23,7 +23,7 @@ public class Student extends Person {
     public List<Double> getGrades() {
         return grades;
     }
-    public void setStudents(List<Double> grades) {
+    public void setGrades(List<Double> grades) {
         this.grades = grades;
     }
     public int getStudentID() {
@@ -35,7 +35,6 @@ public class Student extends Person {
     public void addGrade(double grade) {
         grades.add(grade);
     }
-
     public double getAverageGrade() {
         if (grades.isEmpty()) { 
             return 0;
@@ -64,7 +63,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
  -Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "student.json")))
 
  commande POST (sans json fichier) :
- 
+
 Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
 -Body '{"name":"John Doe","age":21,"studentID":12345,"grades":[14,16,12,18,15]}'

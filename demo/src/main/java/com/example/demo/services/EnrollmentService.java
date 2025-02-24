@@ -25,7 +25,6 @@ public class EnrollmentService {
     public List<Enrollment> getAllEnrollment() {
         return enrollmentRepository.findAll();
     }
-
     public Enrollment enrollStudent(Long studentId, Long courseId) {
         Student student = studentRepository.findById(studentId).orElse(null);
         Course course = courseRepository.findById(courseId).orElse(null);
@@ -33,7 +32,6 @@ public class EnrollmentService {
         if (student == null || course == null) {
             return null;
         }
-
         Enrollment enrollment = new Enrollment(student, course);
         return enrollmentRepository.save(enrollment);
     }

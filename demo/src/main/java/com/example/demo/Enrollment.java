@@ -21,6 +21,7 @@ public class Enrollment {
     public Enrollment(Student student, Course course) {
         this.student = student;
         this.course = course;
+        this.register();
     }
     public Long getId() {
         return id;
@@ -28,14 +29,8 @@ public class Enrollment {
     public Course getCourse() {
         return course;
     }
-    public void setCourse(Course course) {
-        this.course = course;
-    }
     public Student getStudent() {
         return student;
-    }
-    public void setStudent(Student student) {
-        this.student = student;
     }
     public void register() {
         course.enrollStudent(student);

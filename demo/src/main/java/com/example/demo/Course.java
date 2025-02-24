@@ -25,6 +25,7 @@ public class Course {
     @JsonProperty("creditHours")
     private int creditHours;
     @ManyToMany
+    @JsonProperty("students")
     private List<Student> students = new ArrayList<>();
 
     public Course() {}
@@ -33,36 +34,21 @@ public class Course {
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.creditHours = creditHours;
-    }
-    public List<Student> getStudents() {
+        }
+        public List<Student> getStudents() {
         return students;
-    }
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
+        }
         public Long getId() {
         return id;
-        }
-        public void setId(Long id) {
-            this.id = id;
         }
         public int getCreditHours() {
             return creditHours;
         }
-        public void setCreditHours(int CreditHours) {
-            this.creditHours = CreditHours;
-        }
         public String getCourseName() {
             return courseName;
         }
-        public void setCourseName(String courseName) {
-            this.courseName = courseName;
-        }
         public String getCourseCode() {
             return courseCode;
-        }
-        public void setCourseCode(String courseCode) {
-            this.courseCode = courseCode;
         }
         public void enrollStudent(Student student) {
             students.add(student);
@@ -96,7 +82,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 Commande POST (sans json files) :
 Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"courseName":"Mathematiques","courseCode":"MATH101","credits":3}'*/ 
+-Body '{"courseName":"Mathematiques","courseCode":"MATH101","creditHours":3}*/ 
 
 // commande GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
 
