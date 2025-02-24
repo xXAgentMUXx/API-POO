@@ -5,8 +5,10 @@ import java.util.List;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "students")
 public class Student extends Person {
 
     private int studentID;
