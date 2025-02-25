@@ -35,12 +35,12 @@ public class Enrollment {
     public void register() {
         course.enrollStudent(student);
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+} // Command "cd demo" then, "./gradlew.bat bootRun" to execute the page
 
-/*Commande POST :
+/*Command POST :
  Invoke-WebRequest -Uri "http://localhost:8080/enrollments" -Method Post `
 -Headers @{"Content-Type"="application/x-www-form-urlencoded"} `
 -Body "studentId=1&courseId=1"
 
-commande delete : Invoke-WebRequest -Uri "http://localhost:8080/enrollments/1" -Method Delete
+Command Delete : Invoke-WebRequest -Uri "http://localhost:8080/enrollments/1" -Method Delete
  */

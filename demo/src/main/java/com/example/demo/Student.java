@@ -56,21 +56,21 @@ public class Student extends Person {
         
         System.out.println("Moyenne des notes de " +" ( ID : " + student.getStudentID() + " ) : " + student.getAverageGrade());
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+} // Command "cd demo" then, "./gradlew.bat bootRun" to execute the page
 
-/*commande POST (avec json fichier) :
+/*Command POST (with json files) :
 
 Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 -Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
  -Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "student.json")))
 
- commande POST (sans json fichier) :
+Command POST (whitout json files) :
 
 Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
 -Body '{"name":"John Doe","age":21,"studentID":12345,"grades":[14,16,12,18,15]}'
  */
 
- //commande GET : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Get
+ //Command GET : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Get
 
- // commande suppress : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Delete
+ // Command Delete : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Delete

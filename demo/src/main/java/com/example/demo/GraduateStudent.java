@@ -22,4 +22,4 @@ public class GraduateStudent extends Student {
         System.out.println("ID : " + gradeStudent.getStudentID());
         System.out.println("Moyenne : " + gradeStudent.getAverageGrade());
     }
-} // faites la commande "cd demo" puis, ".\gradlew.bat bootRun" pour executer la page
+} // Command "cd demo" then, "./gradlew.bat bootRun" to execute the page
