@@ -22,30 +22,30 @@ public class Admin_Controller {
         this.courseService = courseService;
         this.studentService = studentService;
     }
-    // Commande pour Delete tout : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAll" -Method Delete
+    // Command for Delete all data : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAll" -Method Delete
     @DeleteMapping("/deleteAll") 
     public String deleteAllData() {
         enrollmentService.deleteAll();
         courseService.deleteAll();
         studentService.deleteAll();
-        return "Toutes les données ont été supprimées avec succès.";
+        return "All data has been successfully deleted.";
     }
-    // commande pour Delete Enrollments : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllEnrollments" -Method Delete
+    // Command for Delete all data from Enrollments : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllEnrollments" -Method Delete
     @DeleteMapping("/deleteAllEnrollments")
     public String deleteAllEnrollments() {
         enrollmentService.deleteAllEnrollments();
-        return "Toutes les inscriptions étudiantes ont été supprimées avec succès.";
+        return "All student registrations have been successfully removed.";
     }
-    // commande pour Delete Course : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllCourses" -Method Delete
+    // Command for Delete all data from Courses : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllCourses" -Method Delete
     @DeleteMapping("/deleteAllCourses")
     public String deleteAllCourses() {
         courseService.deleteAllCourses();
-        return "Tous les cours ont été supprimés avec succès.";
+        return "All courses have been successfully deleted.";
     }
-    // commande pour Delete Students : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllStudents" -Method Delete
+    // Command for Delete all from Students : Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAllStudents" -Method Delete
     @DeleteMapping("/deleteAllStudents")
     public String deleteAllStudents() {
         studentService.deleteAllStudents();
-        return "Tous les étudiants ont été supprimés avec succès.";
+        return "All students have been successfully deleted.";
     }
 } 
