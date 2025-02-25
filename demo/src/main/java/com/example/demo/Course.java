@@ -25,8 +25,7 @@ public class Course {
     @JsonProperty("creditHours")
     private int creditHours;
     @ManyToMany
-    @JsonProperty("students")
-    private List<Student> students = new ArrayList<>();
+    private List<Student> Students = new ArrayList<>();
 
     public Course() {}
 
@@ -35,8 +34,9 @@ public class Course {
         this.courseCode = courseCode;
         this.creditHours = creditHours;
         }
-        public List<Student> getStudents() {
-        return students;
+        @JsonProperty("Students")
+        public List<Student> getEnrolledStudents() {
+        return Students;
         }
         public Long getId() {
         return id;
@@ -51,14 +51,11 @@ public class Course {
             return courseCode;
         }
         public void enrollStudent(Student student) {
-            students.add(student);
-        }
-          public List<Student> getEnrolledStudents() {
-            return students;
+            Students.add(student);
         }
     public static void main(String[] args) {
     Course course = new Course("Mathématiques", "MATHS_101", 3);
-        
+
         Student student1 = new Student("Mathys", 20, 1001);
         Student student2 = new Student("Axel", 22, 1452);
         Student student3 = new Student("Vito", 21, 4521);
@@ -82,9 +79,8 @@ Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 Commande POST (sans json files) :
 Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"courseName":"Mathematiques","courseCode":"MATH101","creditHours":3}*/ 
+-Body '{"courseName":"Mathematiques","courseCode":"MATH101","credits":3}'*/ 
 
 // commande GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
 
 // commande suppress : Invoke-WebRequest -Uri "http://localhost:8080/courses/1" -Method Delete
-

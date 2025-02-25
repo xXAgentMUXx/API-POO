@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Course;
 import com.example.demo.repository.CourseRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CourseService {
     private final CourseRepository courseRepository;
@@ -28,5 +30,9 @@ public class CourseService {
     }
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
+    }
+    @Transactional
+    public void deleteAll() {
+        courseRepository.deleteAll();
     }
 }

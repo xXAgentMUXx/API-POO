@@ -35,5 +35,5 @@ public class EnrollmentController {
     public ResponseEntity<String> deleteEnrollment(@PathVariable Long id) {
     enrollmentService.deleteEnrollment(id);
         return ResponseEntity.ok("Enrollment deleted successfully.");
-}
+    }
 }

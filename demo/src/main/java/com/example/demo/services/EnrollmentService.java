@@ -11,6 +11,8 @@ import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.EnrollmentRepository;
 import com.example.demo.repository.studentRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class EnrollmentService {
     private final EnrollmentRepository enrollmentRepository;
@@ -37,5 +39,9 @@ public class EnrollmentService {
     }
     public void deleteEnrollment(Long id) {
         enrollmentRepository.deleteById(id);
+    }
+    @Transactional
+    public void deleteAll() {
+        enrollmentRepository.deleteAll();
     }
 }
