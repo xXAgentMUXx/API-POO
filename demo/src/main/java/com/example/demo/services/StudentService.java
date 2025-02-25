@@ -35,4 +35,8 @@ public class StudentService {
     public void deleteAll() {
         studentRepository.deleteAll();
     }
+    @Transactional
+    public void deleteAllStudents() {
+        studentRepository.deleteAll();
+    }
 }

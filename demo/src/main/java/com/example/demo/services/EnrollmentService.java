@@ -44,4 +44,8 @@ public class EnrollmentService {
     public void deleteAll() {
         enrollmentRepository.deleteAll();
     }
+    @Transactional
+    public void deleteAllEnrollments() {
+        enrollmentRepository.deleteAll();
+    }
 }

@@ -35,4 +35,8 @@ public class CourseService {
     public void deleteAll() {
         courseRepository.deleteAll();
     }
+    @Transactional
+    public void deleteAllCourses() {
+        courseRepository.deleteAll();
+    }
 }
