@@ -50,8 +50,8 @@ public class EnrollmentController {
         return ResponseEntity.ok("Enrollment deleted successfully.");
     }
     @PutMapping("/{id}")
-public ResponseEntity<Enrollment> updateEnrollment(@PathVariable Long id, @RequestBody Map<String, Long> updateDetails) {
-    return enrollmentRepository.findById(id).flatMap(enrollment -> 
+    public ResponseEntity<Enrollment> updateEnrollment(@PathVariable Long id, @RequestBody Map<String, Long> updateDetails) {
+        return enrollmentRepository.findById(id).flatMap(enrollment -> 
         studentRepository.findById(updateDetails.get("studentId"))
             .flatMap(newStudent -> courseRepository.findById(updateDetails.get("courseId"))
                 .map(newCourse -> {

@@ -49,7 +49,7 @@ public class CourseController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course courseDetails) {
-    return courseRepository.findById(id).map(course -> {
+        return courseRepository.findById(id).map(course -> {
         course.setCourseName(courseDetails.getCourseName());
         course.setCourseCode(courseDetails.getCourseCode());
         course.setCreditHours(courseDetails.getCreditHours());

@@ -78,18 +78,4 @@ public class Course {
             System.out.println("- Name : " + s.getName() + ", ID : "+ s.getStudentID());
         }
     }
-} // Command "cd demo" then, "./gradlew.bat bootRun" to execute the page
-
-/* Command POST (with json files) : 
-Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
--Headers @{"Content-Type"="application/json"; "charset"="utf-8"} `
--Body ([System.Text.Encoding]::UTF8.GetBytes((Get-Content -Raw -Path "data.json")))
-
-Command POST (without json files) :
-Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
--Headers @{"Content-Type"="application/json"} `
--Body '{"courseName":"Mathematiques","courseCode":"MATH101","credits":3}'*/ 
-
-// Command GET : Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
-
-// Command suppress : Invoke-WebRequest -Uri "http://localhost:8080/courses/1" -Method Delete
+} 
