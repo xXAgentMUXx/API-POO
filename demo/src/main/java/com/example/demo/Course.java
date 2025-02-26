@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToMany;
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Course {
+    // all properties for the class Course
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,38 +28,46 @@ public class Course {
     @ManyToMany
     private List<Student> Students = new ArrayList<>();
 
+     // Default constructor
     public Course() {}
 
+    // Constructor to initialize the properties
     public Course(String courseName, String courseCode, int creditHours) {
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.creditHours = creditHours;
         }
+        // getter for student
         @JsonProperty("Students")
         public List<Student> getEnrolledStudents() {
         return Students;
         }
+        // getter for id
         public Long getId() {
         return id;
         }
+        // getter and setter for creditHours
         public int getCreditHours() {
             return creditHours;
         }
         public void setCreditHours( int creditHours) {
             this.creditHours = creditHours;
         }
+        // getter and setter for CourseName
         public String getCourseName() {
             return courseName;
         }
         public void setCourseName( String courseName) {
             this.courseName =  courseName;
         }
+        // getter and setter for courseCode
         public String getCourseCode() {
             return courseCode;
         }
         public void setCourseCode( String courseCode) {
             this.courseCode =  courseCode;
         }
+        // Method to enroll a student in a new course
         public void enrollStudent(Student student) {
             Students.add(student);
         }

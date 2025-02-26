@@ -24,31 +24,36 @@ import com.example.demo.services.EnrollmentService;
 @RequestMapping("/enrollments")
 public class EnrollmentController {
 
+    // Injecting services and repository required for handling enrollments-related data
     private final EnrollmentService enrollmentService;
     private final CourseRepository courseRepository;
     private final studentRepository studentRepository;
     private final EnrollmentRepository enrollmentRepository;
 
+    // Constructors to initialize services and repository
     public EnrollmentController(EnrollmentService enrollmentService, CourseRepository courseRepository, studentRepository studentRepository, EnrollmentRepository enrollmentRepository) {
         this.enrollmentService = enrollmentService;
         this.courseRepository = courseRepository;
         this.enrollmentRepository = enrollmentRepository;
         this.studentRepository = studentRepository;
     }
+    // Get request to get all the data from enrollments
     @GetMapping
     public ResponseEntity<List<Enrollment>> getAllCourses() {
     return ResponseEntity.ok(enrollmentService.getAllEnrollment());
     }
-
+    // Post request for creating a new enrollment
     @PostMapping
     public ResponseEntity<Enrollment> enrollStudent(@RequestParam Long studentId, @RequestParam Long courseId) {
         return ResponseEntity.ok(enrollmentService.enrollStudent(studentId, courseId));
     }
+    // Delete request to suppres the data from enrollments by it's id
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEnrollment(@PathVariable Long id) {
     enrollmentService.deleteEnrollment(id);
         return ResponseEntity.ok("Enrollment deleted successfully.");
     }
+    // Put request to update the data from enrollments by it's id
     @PutMapping("/{id}")
     public ResponseEntity<Enrollment> updateEnrollment(@PathVariable Long id, @RequestBody Map<String, Long> updateDetails) {
         return enrollmentRepository.findById(id).flatMap(enrollment -> 
@@ -64,6 +69,3 @@ public class EnrollmentController {
     ).orElse(ResponseEntity.notFound().build());
     }
 }
-/*  command to update Enrollment : Invoke-WebRequest -Uri "http://localhost:8080/enrollments/1" -Method Put `
--Headers @{"Content-Type"="application/json"} `
--Body '{"studentId":2, "courseId":3}'*/

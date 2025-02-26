@@ -20,31 +20,38 @@ import com.example.demo.services.StudentService;
 @RequestMapping("/students")
 public class StudentController {
     
+    // Injecting services and repository for student data
     private final StudentService studentService;
     private final studentRepository studentRepository;
 
+    // Constructors to initialize services and repository
     public StudentController(StudentService studentService, studentRepository studentRepository) {
         this.studentService = studentService;
         this.studentRepository= studentRepository;
     }
+    // Post request for creating a new student
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.createStudent(student));
     }
+    // Get request to get the data from student by it's id
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Student student_id = studentService.getStudentById(id);
         return student_id != null ? ResponseEntity.ok(student_id) : ResponseEntity.notFound().build();
     }
+    // Get request to get all the data from course
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
     }
+    // Delete request to suppres the data from student by it's id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
     studentService.deleteStudent(id);
     return ResponseEntity.noContent().build();
     }
+    // Put request to update the data from student by it's id
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
         return studentRepository.findById(id).map(student -> {
@@ -56,6 +63,3 @@ public class StudentController {
         }).orElse(ResponseEntity.notFound().build());
     }
 }
-/*  Command to update student : Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Put `
--Headers @{"Content-Type"="application/json"} `
--Body '{"name":"Nouveau Nom","age":25,"studentId":1234}'*/

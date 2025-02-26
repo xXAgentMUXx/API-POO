@@ -4,10 +4,13 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class UndergraduateStudent extends Student {
+    // Default constructor
     public UndergraduateStudent() {}
+     // Constructor to initialize the properties
     public UndergraduateStudent(String name, int age, int studentID) {
         super(name, age, studentID);
     }
+    // Method to modify the behavior for UndergraduateStudent
     @Override
     public double getAverageGrade() {
         return super.getAverageGrade() - 2;
@@ -22,4 +25,4 @@ public class UndergraduateStudent extends Student {
         System.out.println("ID : " + gradeStudent.getStudentID());
         System.out.println("Moyenne : " + gradeStudent.getAverageGrade());
     }
-} // Command "cd demo" then, "./gradlew.bat bootRun" to execute the page
+} 
