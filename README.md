@@ -92,9 +92,7 @@ Delete a Student :
 Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Delete
 
 Update a Student :
-Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Put `
--Headers @{"Content-Type"="application/json"} `
--Body '{"name":"John","age":15,"studentId":1238}'
+Invoke-WebRequest -Uri "http://localhost:8080/students/897" -Method Put -Headers @{"Content-Type"="application/json"} -Body '{"name":"John","age":15,"studentID":1238,"grades":[16.5,17.2,14.8,18.9,19.3]}'
 
 Commands for admin_Controller.java (Mode Admin) :
 
