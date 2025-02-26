@@ -96,7 +96,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Put `
 -Headers @{"Content-Type"="application/json"} `
 -Body '{"name":"New Name","age":25,"studentId":1234}'
 
-Commands for admin.java (Administration) :
+Commands for admin_Controller.java (Mode Admin) :
 
 Delete All Data :
 Invoke-WebRequest -Uri "http://localhost:8080/admin/deleteAll" -Method Delete
