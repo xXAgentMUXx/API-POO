@@ -46,7 +46,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 Add a Course (without JSON file) :
 Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"courseName":"Mathematics","courseCode":"MATH101","credits":3}'
+-Body '{"courseName":"Mathematiques","courseCode":"MATH_101","creditHours":3}'
 
 Get the List of Courses :
 Invoke-WebRequest -Uri "http://localhost:8080/courses" -Method Get
@@ -57,7 +57,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/courses/1" -Method Delete
 Update a Course :
 Invoke-WebRequest -Uri "http://localhost:8080/courses/1" -Method Put `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"courseName":"Physics","courseCode":"PHY101","creditHours":4}'
+-Body '{"courseName":"Physics","courseCode":"PHY_101","creditHours":4}'
 
 Commands for enrollment.java (Enrollments) :
 
@@ -84,7 +84,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 Add a Student (without JSON file) :
 Invoke-WebRequest -Uri "http://localhost:8080/students" -Method Post `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"name":"John Doe","age":21,"studentID":12345,"grades":[14,16,12,18,15]}'
+-Body '{"name":"Bob","age":18,"studentID":1225,"grades":[14,16,12,18,15]}'
 
 Get a Student's Details : 
 Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Get
@@ -94,7 +94,7 @@ Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Delete
 Update a Student :
 Invoke-WebRequest -Uri "http://localhost:8080/students/1" -Method Put `
 -Headers @{"Content-Type"="application/json"} `
--Body '{"name":"New Name","age":25,"studentId":1234}'
+-Body '{"name":"John","age":15,"studentId":1238}'
 
 Commands for admin_Controller.java (Mode Admin) :
 
