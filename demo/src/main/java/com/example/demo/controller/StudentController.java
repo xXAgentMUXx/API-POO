@@ -58,6 +58,7 @@ public class StudentController {
         student.setName(studentDetails.getName());
         student.setAge(studentDetails.getAge());
         student.setStudentID(studentDetails.getStudentID());
+        student.setGrades(studentDetails.getGrades());
         studentRepository.save(student);
             return ResponseEntity.ok(student);
         }).orElse(ResponseEntity.notFound().build());
