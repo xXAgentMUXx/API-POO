@@ -36,7 +36,7 @@ public class StudentController {
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.createStudent(student));
     }
-    // Get request to get the data from student by its id
+    // Get request to get the data from student by it's id
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Student student_id = studentService.getStudentById(id);
@@ -55,24 +55,33 @@ public class StudentController {
     }
     // Put request to update the data from student by its id
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
+    public ResponseEntity<? extends Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
     return studentRepository.findById(id).map(existingStudent -> {
         existingStudent.setName(studentDetails.getName());
         existingStudent.setAge(studentDetails.getAge());
         existingStudent.setStudentID(studentDetails.getStudentID());
         existingStudent.setGrades(studentDetails.getGrades());
-        // Method to update in the controller the graduate or undergraduate Student
+        // Rewrite the grades after update
         double newAverage = existingStudent.getAverageGrade();
-        Student updatedStudent;
-        if (newAverage < 10) {
-            updatedStudent = new UndergraduateStudent(existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID());
-        } else {
-            updatedStudent = new GraduateStudent(existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID());
+        // Change the type graudate or undergraduate if necessary
+        if (newAverage < 10 && existingStudent instanceof GraduateStudent) {
+            UndergraduateStudent downgradedStudent = new UndergraduateStudent(
+                existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID()
+            );
+            downgradedStudent.setGrades(existingStudent.getGrades());
+            studentRepository.delete(existingStudent);
+            return ResponseEntity.ok(studentRepository.save(downgradedStudent));
+        } else if (newAverage >= 10 && existingStudent instanceof UndergraduateStudent) {
+            GraduateStudent upgradedStudent = new GraduateStudent(
+                existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID()
+            );
+            upgradedStudent.setGrades(existingStudent.getGrades());
+            studentRepository.delete(existingStudent);
+            return ResponseEntity.ok(studentRepository.save(upgradedStudent));
         }
-        updatedStudent.setGrades(existingStudent.getGrades());
-        studentRepository.save(updatedStudent);
-
-        return ResponseEntity.ok(updatedStudent);
+        // Save if not change of type
+        studentRepository.save(existingStudent);
+        return ResponseEntity.ok(existingStudent);
     }).orElse(ResponseEntity.notFound().build());
-    }
+}
 }
