@@ -42,19 +42,19 @@ public class CourseController {
     public ResponseEntity<List<Course>> getAllCourses() {
         return ResponseEntity.ok(courseService.getAllCourses());
     }
-    // Get request to get the data from course by it's id
+    // Get request to get the data from course by its id
     @GetMapping("/{id}")
     public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
         Course course = courseService.getCourseById(id);
         return course != null ? ResponseEntity.ok(course) : ResponseEntity.notFound().build();
     }
-    // Delete request to suppres the data from course by it's id
+    // Delete request to suppres the data from course by its id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
     courseService.deleteCourse(id);
     return ResponseEntity.noContent().build();
     }
-    // Put request to update the data from course by it's id
+    // Put request to update the data from course by its id
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course courseDetails) {
         return courseRepository.findById(id).map(course -> {
