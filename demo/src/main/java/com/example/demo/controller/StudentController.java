@@ -40,7 +40,7 @@ public class StudentController {
         Student student_id = studentService.getStudentById(id);
         return student_id != null ? ResponseEntity.ok(student_id) : ResponseEntity.notFound().build();
     }
-    // Get request to get all the data from course
+    // Get request to get all the data from student
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
