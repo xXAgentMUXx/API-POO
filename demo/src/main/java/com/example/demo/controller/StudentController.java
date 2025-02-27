@@ -34,7 +34,7 @@ public class StudentController {
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.createStudent(student));
     }
-    // Get request to get the data from student by it's id
+    // Get request to get the data from student by its id
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Student student_id = studentService.getStudentById(id);
@@ -45,13 +45,13 @@ public class StudentController {
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentService.getAllStudents());
     }
-    // Delete request to suppres the data from student by it's id
+    // Delete request to suppres the data from student by its id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
     studentService.deleteStudent(id);
     return ResponseEntity.noContent().build();
     }
-    // Put request to update the data from student by it's id
+    // Put request to update the data from student by its id
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
         return studentRepository.findById(id).map(student -> {
