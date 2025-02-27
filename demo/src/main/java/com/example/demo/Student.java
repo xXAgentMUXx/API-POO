@@ -45,10 +45,10 @@ public class Student extends Person {
     }
     // Method to return an average grade for a student
     public double getAverageGrade() {
-        double somme = 0;
         if (grades.isEmpty()) { 
             return 0;
         }
+        double somme = 0;
         for (double grade : grades) {
             somme += grade;
         }
