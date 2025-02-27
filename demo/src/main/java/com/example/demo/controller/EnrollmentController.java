@@ -47,13 +47,13 @@ public class EnrollmentController {
     public ResponseEntity<Enrollment> enrollStudent(@RequestParam Long studentId, @RequestParam Long courseId) {
         return ResponseEntity.ok(enrollmentService.enrollStudent(studentId, courseId));
     }
-    // Delete request to suppres the data from enrollments by it's id
+    // Delete request to suppres the data from enrollments by its id
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteEnrollment(@PathVariable Long id) {
     enrollmentService.deleteEnrollment(id);
         return ResponseEntity.ok("Enrollment deleted successfully.");
     }
-    // Put request to update the data from enrollments by it's id
+    // Put request to update the data from enrollments by its id
     @PutMapping("/{id}")
     public ResponseEntity<Enrollment> updateEnrollment(@PathVariable Long id, @RequestBody Map<String, Long> updateDetails) {
         return enrollmentRepository.findById(id).flatMap(enrollment -> 
