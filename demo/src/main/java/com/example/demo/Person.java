@@ -43,7 +43,7 @@ public abstract class Person {
     public void setAge(int age) {
         this.age = age;
     }
-    public static void main(String[] args) {
+     public static void main(String[] args) {
     
         Student student = new Student("Axel", 20, 1045);
         System.out.println("Nom : " + student.getName());
