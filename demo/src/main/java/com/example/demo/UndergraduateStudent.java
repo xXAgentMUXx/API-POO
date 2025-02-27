@@ -1,8 +1,10 @@
 package com.example.demo;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("Undergraduate")
 public class UndergraduateStudent extends Student {
     // Default constructor
     public UndergraduateStudent() {}
@@ -13,8 +15,12 @@ public class UndergraduateStudent extends Student {
     // Method to modify the behavior for UndergraduateStudent
     @Override
     public double getAverageGrade() {
-        return super.getAverageGrade() - 2;
-    }
+        double average = super.getAverageGrade() - 2;
+        if (average <= 0) {
+            return 0;
+        }
+            return average;
+        }
     public static void main(String[] args) {
         UndergraduateStudent gradeStudent = new UndergraduateStudent("Mathys", 25, 2001);
         gradeStudent.addGrade(17.9);
