@@ -28,7 +28,7 @@ public class Course {
     @ManyToMany
     private List<Student> Students = new ArrayList<>();
 
-     // Default constructor
+    // Default constructor
     public Course() {}
 
     // Constructor to initialize the properties
