@@ -3,6 +3,8 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,7 +15,7 @@ public class Student extends Person {
 
     // all properties for the class Student
     private int studentID;
-    
+    private boolean isGraduated; // Optional propierties to know if the student is graduated or undergraduated for average grade
     @ElementCollection
     private List<Double> grades = new ArrayList<>();
 
@@ -24,6 +26,15 @@ public class Student extends Person {
     public Student(String name, int age, int studentID) {
         super(name, age); 
         this.studentID = studentID;
+        this.isGraduated = false;
+    }
+    // Getter and Setter for isGraduated
+    @JsonIgnore
+    public boolean isGraduated() {
+        return isGraduated;
+    }
+    public void setGraduated(boolean graduated) {
+        this.isGraduated = graduated;
     }
     // getter and setter for grades
     public List<Double> getGrades() {
