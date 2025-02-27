@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.GraduateStudent;
 import com.example.demo.Student;
+import com.example.demo.UndergraduateStudent;
 import com.example.demo.repository.studentRepository;
 import com.example.demo.services.StudentService;
 
@@ -54,13 +56,23 @@ public class StudentController {
     // Put request to update the data from student by its id
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
-        return studentRepository.findById(id).map(student -> {
-        student.setName(studentDetails.getName());
-        student.setAge(studentDetails.getAge());
-        student.setStudentID(studentDetails.getStudentID());
-        student.setGrades(studentDetails.getGrades());
-        studentRepository.save(student);
-            return ResponseEntity.ok(student);
-        }).orElse(ResponseEntity.notFound().build());
+    return studentRepository.findById(id).map(existingStudent -> {
+        existingStudent.setName(studentDetails.getName());
+        existingStudent.setAge(studentDetails.getAge());
+        existingStudent.setStudentID(studentDetails.getStudentID());
+        existingStudent.setGrades(studentDetails.getGrades());
+        // Method to update in the controller the graduate or undergraduate Student
+        double newAverage = existingStudent.getAverageGrade();
+        Student updatedStudent;
+        if (newAverage < 10) {
+            updatedStudent = new UndergraduateStudent(existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID());
+        } else {
+            updatedStudent = new GraduateStudent(existingStudent.getName(), existingStudent.getAge(), existingStudent.getStudentID());
+        }
+        updatedStudent.setGrades(existingStudent.getGrades());
+        studentRepository.save(updatedStudent);
+
+        return ResponseEntity.ok(updatedStudent);
+    }).orElse(ResponseEntity.notFound().build());
     }
 }
