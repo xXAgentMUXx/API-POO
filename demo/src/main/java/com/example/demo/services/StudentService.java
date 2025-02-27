@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.GraduateStudent;
 import com.example.demo.Student;
+import com.example.demo.UndergraduateStudent;
 import com.example.demo.repository.studentRepository;
 
 import jakarta.transaction.Transactional;
@@ -20,8 +22,17 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
      // Method to create a new student (and save it)
-    public Student createStudent(Student student) {
-        return studentRepository.save(student);
+     public Student createStudent(Student student) {
+        double average = student.getAverageGrade();
+        Student categorizedStudent;
+        // Condition or method if the student is undergraduate or graduate
+        if (average < 10) {
+            categorizedStudent = new UndergraduateStudent(student.getName(), student.getAge(), student.getStudentID());
+        } else {
+            categorizedStudent = new GraduateStudent(student.getName(), student.getAge(), student.getStudentID());
+        }
+        categorizedStudent.setGrades(student.getGrades());
+        return studentRepository.save(categorizedStudent);
     }
     // Method to get all students
     public List<Student> getAllStudents() {
