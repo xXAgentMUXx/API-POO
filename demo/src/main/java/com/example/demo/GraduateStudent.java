@@ -6,20 +6,23 @@ import jakarta.persistence.Entity;
 @Entity
 @DiscriminatorValue("Graduate")
 public class GraduateStudent extends Student {
-     // Default constructor
+    // Default constructor
     public GraduateStudent() {}
-    // Constructor to initialize the properties
+
+    // Constructor to initialize properties
     public GraduateStudent(String name, int age, int studentID) {
         super(name, age, studentID);
+        this.setGraduated(true); 
     }
-    // Method to modify the behavior for GraduateStudent
+    // Method for the average grade for graduate
     @Override
     public double getAverageGrade() {
-        double average = super.getAverageGrade() + 2;
-        if (average >= 20) {
-            return 20;
-        }
-        return average;
+        double average = super.getAverageGrade() + 2; 
+        return Math.min(average, 20);
+    }
+    // Method to go to graduate at Undergraduate
+    public void downgradeToUndergraduate() {
+        this.setGraduated(false);
     }
     public static void main(String[] args) {
         GraduateStudent gradeStudent = new GraduateStudent("Vito", 25, 2001);
