@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Course;
 import com.example.demo.Enrollment;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.EnrollmentRepository;
@@ -57,15 +58,29 @@ public class EnrollmentController {
     @PutMapping("/{id}")
     public ResponseEntity<Enrollment> updateEnrollment(@PathVariable Long id, @RequestBody Map<String, Long> updateDetails) {
         return enrollmentRepository.findById(id).flatMap(enrollment -> 
-        studentRepository.findById(updateDetails.get("studentId"))
-            .flatMap(newStudent -> courseRepository.findById(updateDetails.get("courseId"))
-                .map(newCourse -> {
-                    enrollment.setStudent(newStudent);
-                    enrollment.setCourse(newCourse);
-                    enrollmentRepository.save(enrollment);
-                    return ResponseEntity.ok(enrollment);
-                })
-            )
-    ).orElse(ResponseEntity.notFound().build());
+            studentRepository.findById(updateDetails.get("studentId"))
+                .flatMap(newStudent -> courseRepository.findById(updateDetails.get("courseId"))
+                    .map(newCourse -> {
+                        // Delete the old student from course
+                        Course oldCourse = enrollment.getCourse();
+                        if (oldCourse != null) {
+                            oldCourse.getEnrolledStudents().remove(enrollment.getStudent());
+                            courseRepository.save(oldCourse);
+                        }
+                        // Check student if it is created
+                        if (!newCourse.getEnrolledStudents().contains(newStudent)) {
+                            newCourse.getEnrolledStudents().add(newStudent);
+                        }
+                        // Update enrollment
+                        enrollment.setStudent(newStudent);
+                        enrollment.setCourse(newCourse);
+                        // Save the update
+                        courseRepository.save(newCourse);
+                        enrollmentRepository.save(enrollment);
+                        
+                        return ResponseEntity.ok(enrollment);
+                    })
+                )
+        ).orElse(ResponseEntity.notFound().build());
     }
 }
